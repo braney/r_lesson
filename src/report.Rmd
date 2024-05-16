@@ -1,0 +1,62 @@
+---
+title: "Sample Report"
+author: "Helper Bryan"
+date: "2024-05-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# My Summary of Today
+
+**This R workshop was so long but I learned something!**
+
+## How I feel about things
+
+*Thank goodness tomorrow is Friday.*
+
+### Working with R is fun
+
+`This is cool-looking code.`
+
+A numeric list:
+
+1.  It is relatively easy to use (?)
+2.  It provides lots of functionality for dat vis.
+3.  There is no number 3.
+
+A bulletted list: (need a blank line before the list)
+
+-   asterisk or dash creates a bulletted item
+-   thing 2
+-   there is no third item
+
+[Center for Teaching Excellence](https://cte.rice.edu/)
+
+### Loading Data and Libraries:
+
+```{r load_data_and_libraries}
+gapminder <- read.csv(file = "../data/gapminder_data.csv", stringsAsFactors = TRUE)
+library(ggplot2)
+library(dplyr)
+```
+
+### Basic plot
+
+```{r plot_data}
+ggplot(data = gapminder,
+       mapping = aes(x = pop, y = lifeExp)) +
+  geom_point(alpha=0.3)
+```
+
+`r 2 + 2`
+
+```{r variable_underscore_definition, echo = FALSE, results = "hide"}
+US_2007 <- gapminder %>%
+  filter(country == "United States", year == 2007)
+options(scipen = 999)
+```
+
+The US gross domestic product per capita is `r US_2007$gdpPercap`.
